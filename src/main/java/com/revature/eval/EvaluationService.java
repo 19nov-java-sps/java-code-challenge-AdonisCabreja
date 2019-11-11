@@ -153,8 +153,24 @@ public class EvaluationService {
 		private List<T> sortedList;
 
 		public int indexOf(T t) {
-			// TODO Write an implementation for this method declaration
-			return 0;
+			
+			int middleIndex = getSortedList().size() / 2;
+			int key = (int) t;
+			
+//			System.out.println(key);
+//			System.out.println(middleIndex);
+//			System.out.println(getSortedList());
+//			
+			// array index out of bounds exception!
+//			while (t != getSortedList().get(middleIndex)) {
+//				if (key > middleIndex) {
+//					middleIndex++;
+//				} else {
+//					middleIndex--;
+//				}
+//			}
+			
+			return 0;//middleIndex;
 		}
 
 		public BinarySearch(List<T> sortedList) {
