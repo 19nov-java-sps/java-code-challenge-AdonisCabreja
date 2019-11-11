@@ -15,15 +15,15 @@ public class EvaluationService {
 	 */
 	public String reverse(String string) {
 		
-		if (string == null) {
+		if (string == null) {	// Checks for null, returns it if true.
 			return null;
 		}
 		
 		String reverseStr = "";
 		
 		for (int i = string.length() - 1; i >= 0; i--) {
-			reverseStr += string.charAt(i);
-		}
+			reverseStr += string.charAt(i);	// Uses charAt function in order to traverse the 
+		}									// string backwards and add it to the reverseStr variable.
 		return reverseStr;
 	}
 	
@@ -43,14 +43,14 @@ public class EvaluationService {
 		
 		String acronym = "";
 		
-		String [] phraseSplit = phrase.split("\\W+");
-		
+		String [] phraseSplit = phrase.split("\\W+");// Uses a regular expression to split the 
+													// string. \W+ is one or more occurrences of non-word characters
 		for (String word : phraseSplit) {
 			acronym += word.charAt(0);
 		}
 		
 		
-		return acronym.toUpperCase();
+		return acronym.toUpperCase();	// Since acronyms are always capital letters I use this here just in case.
 	}
 	
 	
@@ -72,9 +72,10 @@ public class EvaluationService {
 	public int getScrabbleScore(String string) {
 		
 		int [] scrabbleScore = {1, 3, 3, 2, 1, 4, 2, 4, 1, 8, 5, 1, 3, 1, 1, 
-									3, 10, 1, 1, 1, 1, 4, 4, 8, 4, 10};
+									3, 10, 1, 1, 1, 1, 4, 4, 8, 4, 10};	// Ordered the score by alphabetical order.
 		int score = 0;
-
+		
+		// Used ASCII code in order to get the correct index in the scrabbleScore array.
 		for (int i = 0; i < string.length(); i++) {
 			score += scrabbleScore[string.toUpperCase().charAt(i) - 'A'];
 		}
@@ -96,9 +97,9 @@ public class EvaluationService {
 		
 		HashMap<String, Integer> wordC = new HashMap<String, Integer>();
 		
-		String [] stringSplit = string.split("\\W");
-		int count;
-		int index = 0;
+		String [] stringSplit = string.split("\\W"); // Used a regular expression again to split the string.
+		int count;									// but because of this one of the tests doesn't pass
+		int index = 0;								// because it is trying to work with a space *(need to work on that)*
 		
 		for (String word : stringSplit) {
 			count = 0;
