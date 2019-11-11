@@ -1,5 +1,6 @@
 package com.revature.eval;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -13,10 +14,18 @@ public class EvaluationService {
 	 * @return
 	 */
 	public String reverse(String string) {
-		// TODO Write an implementation for this method declaration
-		return null;
+		
+		if (string == null) {
+			return null;
+		}
+		
+		String reverseStr = "";
+		
+		for (int i = string.length() - 1; i >= 0; i--) {
+			reverseStr += string.charAt(i);
+		}
+		return reverseStr;
 	}
-
 	
 	/**
 	 * 2. Convert a phrase to its acronym. Techies love their TLA (Three Letter
@@ -27,8 +36,21 @@ public class EvaluationService {
 	 * @return
 	 */
 	public String acronym(String phrase) {
-		// TODO Write an implementation for this method declaration
-		return null;
+		
+		if (phrase == null) {
+			return null;
+		}
+		
+		String acronym = "";
+		
+		String [] phraseSplit = phrase.split("\\W+");
+		
+		for (String word : phraseSplit) {
+			acronym += word.charAt(0);
+		}
+		
+		
+		return acronym.toUpperCase();
 	}
 	
 	
@@ -48,8 +70,16 @@ public class EvaluationService {
 	 * @return
 	 */
 	public int getScrabbleScore(String string) {
-		// TODO Write an implementation for this method declaration
-		return 0;
+		
+		int [] scrabbleScore = {1, 3, 3, 2, 1, 4, 2, 4, 1, 8, 5, 1, 3, 1, 1, 
+									3, 10, 1, 1, 1, 1, 4, 4, 8, 4, 10};
+		int score = 0;
+
+		for (int i = 0; i < string.length(); i++) {
+			score += scrabbleScore[string.toUpperCase().charAt(i) - 'A'];
+		}
+				
+		return score;
 	}
 	
 	
@@ -63,8 +93,24 @@ public class EvaluationService {
 	 * @return 
 	 */
 	public Map<String, Integer> wordCount(String string) {
-		// TODO Write an implementation for this method declaration
-		return null;
+		
+		HashMap<String, Integer> wordC = new HashMap<String, Integer>();
+		
+		String [] stringSplit = string.split("\\W");
+		int count;
+		int index = 0;
+		
+		for (String word : stringSplit) {
+			count = 0;
+			
+			if (word == stringSplit[index]) {
+				count++;
+				index++;
+			}
+			wordC.put(word, count);
+		}
+	// DOESNT WORK FOR ALL TESTS. (handlesExpandedLists)
+		return wordC;
 	}
 	
 	/**
