@@ -97,9 +97,9 @@ public class EvaluationService {
 		
 		HashMap<String, Integer> wordC = new HashMap<String, Integer>();
 		
-		String [] stringSplit = string.split("\\W"); // Used a regular expression again to split the string.
-		int count;									// but because of this one of the tests doesn't pass
-		int index = 0;								// because it is trying to work with a space *(need to work on that)*
+		String [] stringSplit = string.split("\\W+"); // Used a regular expression again to split the string.
+		int count;
+		int index = 0;
 		
 		for (String word : stringSplit) {
 			count = 0;
@@ -110,7 +110,7 @@ public class EvaluationService {
 			}
 			wordC.put(word, count);
 		}
-	// DOESNT WORK FOR ALL TESTS. (handlesExpandedLists)
+	// DOESNT WORK FOR ALL TESTS. (multipleOccurrencesOfAWord)
 		return wordC;
 	}
 	
@@ -155,22 +155,21 @@ public class EvaluationService {
 		public int indexOf(T t) {
 			
 			int middleIndex = getSortedList().size() / 2;
-			int key = (int) t;
 			
-//			System.out.println(key);
-//			System.out.println(middleIndex);
-//			System.out.println(getSortedList());
-//			
-			// array index out of bounds exception!
-//			while (t != getSortedList().get(middleIndex)) {
-//				if (key > middleIndex) {
-//					middleIndex++;
-//				} else {
-//					middleIndex--;
-//				}
-//			}
+			// Enters the while loop and stays there until middleIndex is equal
+			// to the right number in the list.
+			while (sortedList.indexOf(t) != middleIndex) { 
+				if (sortedList.indexOf(t) > middleIndex) {
+					middleIndex++;
+				} 
+				else if (sortedList.indexOf(t) < middleIndex) {
+					middleIndex--;
+				} else {
+					return middleIndex;
+				}
+			}
 			
-			return 0;//middleIndex;
+			return middleIndex;
 		}
 
 		public BinarySearch(List<T> sortedList) {
