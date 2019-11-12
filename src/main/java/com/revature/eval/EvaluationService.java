@@ -154,10 +154,10 @@ public class EvaluationService {
 
 		public int indexOf(T t) {
 			
-			int middleIndex = getSortedList().size() / 2;
+			int middleIndex = getSortedList().size() / 2;	// assigns the middle index of the list.
 			
 			// Enters the while loop and stays there until middleIndex is equal
-			// to the right number in the list.
+			// to the right index in the list.
 			while (sortedList.indexOf(t) != middleIndex) { 
 				if (sortedList.indexOf(t) > middleIndex) {
 					middleIndex++;
@@ -168,6 +168,8 @@ public class EvaluationService {
 					return middleIndex;
 				}
 			}
+			
+			System.out.println(sortedList.indexOf(t));
 			
 			return middleIndex;
 		}
